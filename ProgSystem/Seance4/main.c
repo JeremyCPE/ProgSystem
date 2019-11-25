@@ -1,0 +1,72 @@
+//FAIT PAR JEREMY MOHARIRY ET SANS OUBLIER MON COLLEGUE ALEXIS //
+//CANNELONNI
+#include <unistd.h>
+#include <time.h> 
+#include <stdio.h>
+#include <fcntl.h>
+  int main(int argc, char *argv[]) {
+ int i;
+ int ran;
+ int tube[2];
+ char buffer[256];
+ int old=0;
+ int max;
+ 
+  if(argc < 2){
+
+    printf("Erreur argument \n");
+    return 0;
+  }
+
+  for(i=0;i<atoi(argv[1]);i++)  
+  { 
+    pipe(tube); //Create pipe
+      if(fork() == 0) 
+      {
+	//Son
+	//S
+	srand(time(NULL) ^ (getpid()<<16));
+	ran = rand()%5000;
+	printf("[fils %d] pid %d valeur =  %d\n",getpid()-getppid(),getpid(),ran);
+	sprintf(buffer, "%d", ran);
+	close(tube[0]); //close read side
+
+	if(write(tube[1],buffer,256) != 256) {
+	      perror("Problème - Ecriture dans le tube \n");
+	      exit(3);
+	      }	
+	
+      } 
+      else
+      {
+	//parent
+	old = atoi(buffer); //get old buffer
+	close(tube[1]); /* close write side */
+	if(read(tube[0], buffer, 256) != 256)
+	{
+	      perror("Problème - Lecture dans le tube \n");
+	      exit(3);
+	}
+	if(atoi(buffer) > old) {
+	 
+	   max = atoi(buffer); 
+	}
+	else {
+	   max = old;
+	}
+         //printf("parent reads %s compare avec %d\n", buffer,compare);
+	 close(tube[0]); /* close the pipe */
+	//;      
+      }
+  } 
+    printf("Le plus grand nombre = %d -pid = %d - Numéro %d \n",max,getpid(),getpid()-getppid());
+
+  return 0;
+} 
+
+void setpipe(int valeur)
+{
+
+
+
+}
