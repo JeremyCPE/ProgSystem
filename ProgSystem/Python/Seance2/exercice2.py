@@ -1,4 +1,8 @@
  #Exercice 2
+#Six taches sequentielles A,B,C,D,E et F
+#Tache A doit préceder les taches B, C D
+#B et C doivent preceder la tache E
+#D et E doivent preceder la tache F
 import multiprocessing as mp
 import sys, time, random
 
