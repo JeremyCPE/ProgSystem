@@ -15,6 +15,7 @@ def process1(verrou,stream):
             stream.write("Je suis le P1, jexecute la Tache T1 \n")
             time.sleep(2)
             stream.write("Fin de la tache T1 \n")
+            #fait implicitement un release (lance la tache T2)
 
 
 def process2(verrou,stream):
