@@ -150,7 +150,7 @@ if __name__ == "__main__" :
     ENTETE = chr(ord('A')+idMax)
     move_to(24, 1)
     curseur_visible()
-    if((PARI!="zzz") and (ENTETE!="zzz")) : 
+    if((PARI!="zzz-") and (ENTETE!="zzz")) : 
         if(PARI==ENTETE):
             print("VOUS AVEZ GAGNÉ LE PARI, VOUS ETES DESORMAIS MILLIONAIRE")
         else:
