@@ -452,7 +452,7 @@ Cste_Alpha=0.345642         # 0.02 # On a P = T * Alpha et T=P/alpha
 
 import multiprocessing as mp
 import random, time,math
-
+import ctypes
 
 def ecrire_um_message(nom_tache, mess) :
     ligne_messages, col_messages=dict_messages_des_taches[nom_tache]
